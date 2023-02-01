@@ -1,0 +1,110 @@
+[
+  {
+    "TEAM": "Saiyans FC",
+    "VICTORIES": 3,
+    "LOSES": 1,
+    "GOALS_SCORED": 11,
+    "GOALS_CONCEDED": 5,
+    "YELLOW_CARDS": 6,
+    "RED_CARDS": 1
+  },
+  {
+    "TEAM": "Ultimate Móstoles",
+    "VICTORIES": 3,
+    "LOSES": 1,
+    "GOALS_SCORED": 14,
+    "GOALS_CONCEDED": 9,
+    "YELLOW_CARDS": 1,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "Porcinos FC",
+    "VICTORIES": 3,
+    "LOSES": 1,
+    "GOALS_SCORED": 14,
+    "GOALS_CONCEDED": 10,
+    "YELLOW_CARDS": 1,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "1K FC",
+    "VICTORIES": 3,
+    "LOSES": 1,
+    "GOALS_SCORED": 14,
+    "GOALS_CONCEDED": 12,
+    "YELLOW_CARDS": 1,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "Kunisports",
+    "VICTORIES": 3,
+    "LOSES": 1,
+    "GOALS_SCORED": 7,
+    "GOALS_CONCEDED": 5,
+    "YELLOW_CARDS": 6,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "El Barrio",
+    "VICTORIES": 2,
+    "LOSES": 2,
+    "GOALS_SCORED": 13,
+    "GOALS_CONCEDED": 9,
+    "YELLOW_CARDS": 2,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "Aniquiladores FC",
+    "VICTORIES": 2,
+    "LOSES": 2,
+    "GOALS_SCORED": 8,
+    "GOALS_CONCEDED": 10,
+    "YELLOW_CARDS": 1,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "XBUYER TEAM",
+    "VICTORIES": 2,
+    "LOSES": 2,
+    "GOALS_SCORED": 8,
+    "GOALS_CONCEDED": 10,
+    "YELLOW_CARDS": 3,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "Los Troncos FC",
+    "VICTORIES": 2,
+    "LOSES": 2,
+    "GOALS_SCORED": 12,
+    "GOALS_CONCEDED": 15,
+    "YELLOW_CARDS": 2,
+    "RED_CARDS": 1
+  },
+  {
+    "TEAM": "Rayo de Barcelona",
+    "VICTORIES": 1,
+    "LOSES": 3,
+    "GOALS_SCORED": 10,
+    "GOALS_CONCEDED": 14,
+    "YELLOW_CARDS": 1,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "Jijantes FC",
+    "VICTORIES": 0,
+    "LOSES": 4,
+    "GOALS_SCORED": 9,
+    "GOALS_CONCEDED": 15,
+    "YELLOW_CARDS": 3,
+    "RED_CARDS": 0
+  },
+  {
+    "TEAM": "PIO FC",
+    "VICTORIES": 0,
+    "LOSES": 4,
+    "GOALS_SCORED": 5,
+    "GOALS_CONCEDED": 11,
+    "YELLOW_CARDS": 5,
+    "RED_CARDS": 0
+  }
+]
