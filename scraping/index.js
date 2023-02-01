@@ -1,6 +1,12 @@
 import * as cheerio from 'cheerio'
-import { writeFile } from 'node:fs/promises'
+import { writeFile, readFile } from 'node:fs/promises'
 import path from 'node:path'
+
+function readDBFile(dbName) {
+  return readFile(`${DB_PATH}/${dbName}.json`, 'utf8').then(JSON.parse)
+}
+const DB_PATH = path.join(process.cwd(), './db/')
+const TEAMS = await readDBFile('teams')
 
 const URLS = {
   LEADERBOARD: 'https://www.kingsleague.pro/estadisticas/clasificacion'
@@ -18,14 +24,16 @@ async function getLeaderboard() {
   const $rows = $('table tbody tr')
 
   const LEADERBOARD_SELECTORS = {
-    TEAM: { selector: '.fs-table-text_3', typeOf: 'string' },
-    VICTORIES: { selector: '.fs-table-text_4', typeOf: 'number' },
-    LOSES: { selector: '.fs-table-text_5', typeOf: 'number' },
-    GOALS_SCORED: { selector: '.fs-table-text_6', typeOf: 'number' },
-    GOALS_CONCEDED: { selector: '.fs-table-text_7', typeOf: 'number' },
-    YELLOW_CARDS: { selector: '.fs-table-text_8', typeOf: 'number' },
-    RED_CARDS: { selector: '.fs-table-text_9', typeOf: 'number' }
+    team: { selector: '.fs-table-text_3', typeOf: 'string' },
+    victories: { selector: '.fs-table-text_4', typeOf: 'number' },
+    loses: { selector: '.fs-table-text_5', typeOf: 'number' },
+    goalsScored: { selector: '.fs-table-text_6', typeOf: 'number' },
+    goalsConceded: { selector: '.fs-table-text_7', typeOf: 'number' },
+    yellowCards: { selector: '.fs-table-text_8', typeOf: 'number' },
+    redCards: { selector: '.fs-table-text_9', typeOf: 'number' }
   }
+
+  const getTeamFromName = ({ name }) => TEAMS.find((team) => team.name === name)
 
   const cleanText = (text) =>
     text
@@ -49,7 +57,12 @@ async function getLeaderboard() {
       }
     )
 
-    leaderboard.push(Object.fromEntries(leaderBoardEntries))
+    const { team: teamName, ...leaderBoardForTeam } =
+      Object.fromEntries(leaderBoardEntries)
+
+    const team = getTeamFromName({ name: teamName })
+
+    leaderboard.push({ ...leaderBoardForTeam, team })
   })
 
   return leaderboard
@@ -57,5 +70,8 @@ async function getLeaderboard() {
 
 const leaderboard = await getLeaderboard()
 
-const filePath = path.join(process.cwd(), 'db', 'leaderboard.json')
-await writeFile(filePath, JSON.stringify(leaderboard, null, 2), 'utf-8')
+await writeFile(
+  `${DB_PATH}/leaderboard.json`,
+  JSON.stringify(leaderboard, null, 2),
+  'utf-8'
+)
