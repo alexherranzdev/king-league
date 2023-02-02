@@ -1,24 +1,12 @@
-import * as cheerio from 'cheerio'
-import { writeFile, readFile } from 'node:fs/promises'
-import path from 'node:path'
+import { writeFile } from 'node:fs/promises'
+import { scrape, readDBFile, cleanText } from '../utils/index.js'
+import { DB_PATH } from '../utils/constants.js'
 
-function readDBFile(dbName) {
-  return readFile(`${DB_PATH}/${dbName}.json`, 'utf8').then(JSON.parse)
-}
-const DB_PATH = path.join(process.cwd(), './db/')
 const TEAMS = await readDBFile('teams')
 
 const URLS = {
   LEADERBOARD: 'https://www.kingsleague.pro/estadisticas/clasificacion'
 }
-
-async function scrape(url) {
-  const res = await fetch(url)
-  const html = await res.text()
-
-  return cheerio.load(html)
-}
-
 async function getLeaderboard() {
   const $ = await scrape(URLS.LEADERBOARD)
   const $rows = $('table tbody tr')
@@ -34,12 +22,6 @@ async function getLeaderboard() {
   }
 
   const getTeamFromName = ({ name }) => TEAMS.find((team) => team.name === name)
-
-  const cleanText = (text) =>
-    text
-      .replace(/\t|\n|\s:/g, ' ')
-      .replace('/.*:/g')
-      .trim()
 
   let leaderboard = []
 
