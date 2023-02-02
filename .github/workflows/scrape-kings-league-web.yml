@@ -25,7 +25,7 @@ jobs:
           version: 7.26.3
           run_install: true
       - run: |
-          npm run scrape
+          node scraping/leaderboard.js
           git config user.name kings-league-bot
           git diff --quiet && git diff --staged --quiet || git commit -am "[bot] update Kings League database"
           git push origin main
