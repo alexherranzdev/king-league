@@ -1,8 +1,10 @@
-import { writeFile } from 'node:fs/promises'
-import { scrape, readDBFile, cleanText } from '../utils/index.js'
-import { DB_PATH } from '../utils/constants.js'
-
-const TEAMS = await readDBFile('teams')
+import {
+  scrape,
+  writeDBFile,
+  cleanText,
+  TEAMS,
+  PRESIDENTS
+} from '../utils/index.js'
 
 const URLS = {
   LEADERBOARD: 'https://www.kingsleague.pro/estadisticas/clasificacion'
@@ -21,7 +23,17 @@ async function getLeaderboard() {
     redCards: { selector: '.fs-table-text_9', typeOf: 'number' }
   }
 
-  const getTeamFromName = ({ name }) => TEAMS.find((team) => team.name === name)
+  const getTeamFromName = ({ name }) => {
+    const { presidentId, ...restOfTeam } = TEAMS.find(
+      (team) => team.name === name
+    )
+
+    const president = PRESIDENTS.find(
+      (president) => president.id === presidentId
+    )
+
+    return { ...restOfTeam, president }
+  }
 
   let leaderboard = []
 
@@ -52,8 +64,4 @@ async function getLeaderboard() {
 
 const leaderboard = await getLeaderboard()
 
-await writeFile(
-  `${DB_PATH}/leaderboard.json`,
-  JSON.stringify(leaderboard, null, 2),
-  'utf-8'
-)
+await writeDBFile('leaderboard', leaderboard)

@@ -1,5 +1,5 @@
-import { scrape, readDBFile, cleanText } from '../utils/index.js'
-import { DB_PATH, STATICS_PATH } from '../utils/constants.js'
+import { scrape, readDBFile, cleanText, writeDBFile } from '../utils/index.js'
+import { STATICS_PATH } from '../utils/constants.js'
 import { writeFile } from 'node:fs/promises'
 
 const TEAMS = await readDBFile('teams')
@@ -27,7 +27,4 @@ const presidents = await Promise.all(
   })
 )
 
-await writeFile(
-  `${DB_PATH}/presidents.json`,
-  JSON.stringify(presidents, null, 2)
-)
+await writeDBFile('presidents', presidents)
