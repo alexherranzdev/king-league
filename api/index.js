@@ -51,6 +51,11 @@ app.get('/leaderboard', (ctx) => {
 	return ctx.json(leaderboard)
 })
 
+
+app.get('/teams', (ctx) => {
+  return ctx.json(teams)
+})
+
 app.get('/presidents', (ctx) => {
   return ctx.json(presidents)
 })
