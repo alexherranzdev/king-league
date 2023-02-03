@@ -11,6 +11,5 @@ module.exports = {
 				'black': ['Archivo Black', 'system-ui', 'sans-serif'],
 			}
 		},
-	},
-	plugins: [],
+	}
 }

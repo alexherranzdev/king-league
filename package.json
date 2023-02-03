@@ -11,7 +11,10 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "publish:api": "wrangler publish api/index.js",
-    "start": "astro dev"
+    "start": "astro dev",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",

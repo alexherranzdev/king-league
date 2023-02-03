@@ -11,7 +11,7 @@ const teams = await response.json()
       <ul class="flex gap-x-2 [&>li>a:hover]:scale-150">
       {teams.map(({id, image, name}) => (
         <li>
-          <a href={`/team/${id}`} class="block transition">
+          <a href={`/team/${id}`} class="group block transition" title={name}>
             <img class="aspect-square w-12 drop-shadow-lg" src={image} alt={`Escudo equipo ${name}`} />
           </a>
         </li>
