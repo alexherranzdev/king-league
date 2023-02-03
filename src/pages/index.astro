@@ -1,10 +1,18 @@
 ---
+import Container from '../components/Container.astro';
+import Table from '../components/Table.astro';
 import Layout from '../layouts/Layout.astro'
 
 ---
 
 <Layout title="Kings League Infojobs">
-	
 	<main>
+		<section class="bg-[#ee6600]">
+			<Container>
+				<div class="col-span-2">
+					<Table />
+				</div>
+			</Container>
+		</section>
 	</main>
 </Layout>
