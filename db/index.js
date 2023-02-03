@@ -1,19 +1,5 @@
-import * as cheerio from 'cheerio'
 import { readFile, writeFile } from 'node:fs/promises'
 import { DB_PATH } from '../utils/constants.js'
-
-export async function scrape(url) {
-  const res = await fetch(url)
-  const html = await res.text()
-
-  return cheerio.load(html)
-}
-
-export const cleanText = (text) =>
-  text
-    .replace(/\t|\n|\s:/g, ' ')
-    .replace('/.*:/g')
-    .trim()
 
 export function readDBFile(dbName) {
   return readFile(`${DB_PATH}/${dbName}.json`, 'utf8').then(JSON.parse)
@@ -29,3 +15,8 @@ export function writeDBFile(dbName, data) {
 
 export const TEAMS = await readDBFile('teams')
 export const PRESIDENTS = await readDBFile('presidents')
+
+export function getImageFromTeam({ name }) {
+	const { image } = TEAMS.find((team) => team.name === name)
+	return image
+}

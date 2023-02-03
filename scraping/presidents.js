@@ -1,4 +1,5 @@
-import { scrape, readDBFile, cleanText, writeDBFile } from '../utils/index.js'
+import { scrape, cleanText } from './utils.js'
+import { readDBFile, writeDBFile } from '../db/index.js'
 import { STATICS_PATH } from '../utils/constants.js'
 import { writeFile } from 'node:fs/promises'
 

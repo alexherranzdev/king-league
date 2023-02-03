@@ -9,6 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     name: Deploy API to Cloudfare Workers
+    # if: ${{ github.event_pull_request.head.repo.full_name == github.repository }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -22,3 +23,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           workingDirectory: api
+          command: publish --env production
